@@ -1,0 +1,32 @@
+JavaScript基础：
+输出到terminal 
+console.log();
+
+const 变量的值不可以从新赋值， 例如 const temp =1后 就不能说 temp =2; 或者 temp +=1;了
+
+const 只锁住变量引用，不锁住对象内容。
+const 数组 可以修改值
+const arr = []; arr.push(1); arr[0] = 2;都是可以的
+
+const 后面加Map也依然可以在 Map里修改，Const temp = new map; temp.set(key, value);是可以的
+
+let 变量是可重新赋值的变量 但是不能重新声明 你可以说 let a = 1; a =2; 但是不能 let a =1; let a = 2;
+var 变量 在leetcode里说永远不要用他,循环里压根用不了var
+
+--------------------------------------------
+用于数列
+
+
+--------------------------------------------
+用于Map：  
+
+Map结构为 {key:value} 例子：Map(4) { 1 => 2, 2 => 2, 3 => 1, 4 => 1 }
+
+Map的循环
+方法1
+map_name.forEach( (value, key) => { funciton 内容}); 
+方法2
+for ([key,value] of map_name){ function 内容}
+
+Map更新
+Map.set(key, value);

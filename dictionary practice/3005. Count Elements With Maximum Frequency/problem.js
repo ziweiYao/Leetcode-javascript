@@ -7,7 +7,7 @@
 
 
 
-var maxFrequencyElements = function(nums) {
+const maxFrequencyElements_FORLOOP = function(nums) {
     const freqs = new Map()
     nums.forEach((num) => {
         freqs.set(num, (freqs.get(num)||0) +1);
@@ -22,5 +22,25 @@ var maxFrequencyElements = function(nums) {
             ans += freq;
         }
     }
+    return ans;
+};
+
+//or 
+const maxFrequencyElements_FOREACH = function(nums) {
+    const freqs = new Map()
+    const update = (num) => {
+        freqs.set(num, (freqs.get(num)||0) +1);
+        console.log([num,freqs.get(num)])
+    }
+    nums.forEach((num) => update(num))
+    console.log(freqs)
+    let max_freq = Math.max(...freqs.values())
+    console.log("max freq = "+ max_freq)
+    let ans = 0;
+    freqs.forEach((value, key) => {
+        if (value === max_freq) {
+            ans += value;
+        }
+    });
     return ans;
 };
