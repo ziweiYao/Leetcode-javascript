@@ -27,7 +27,7 @@ function maxFrequency(nums, k, numOperations) {
 }
 
 // 优化版本
-function maxFrequency2(nums, k, numOperations) {
+function maxFrequencys(nums, k, numOperations) {
     const freqs = new Map();
     sorted = nums.sort((a,b) => a-b)
     const minrange = Math.min(...sorted)-k;
