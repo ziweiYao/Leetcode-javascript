@@ -34,6 +34,14 @@ arr.splice(2, 0, 6, 7); //在索引2的位置插入6和7
 console.log(arr); // [1, 2, 6, 7, 3, 4, 5]
 arr.splice(2, 2, 8, 9); //从索引2开始，删除2个元素，然后插入8和9
 console.log(arr); // [1, 2, 8, 9, 3, 4, 5]
+let arr = [1, 2, 3, 4, 5];
+let index = 2;
+arr.splice(index, 1); //从索引2开始，删除1个元素
+console.log(arr); // [1, 2, 3, 4, 5]
+arr.splice(index, 0, 6); //在索引2的位置插入6
+console.log(arr); // [1, 2, 6, 3, 4, 5]
+arr.splice(index, 1, 7); //从索引2开始，删除1个元素，然后插入7
+console.log(arr); // [1, 2, 4, 5]
 
 array.slice(start, end) //返回数组的一部分，不改变原数组
 array.concat(array2, array3, ...) //合并数组
