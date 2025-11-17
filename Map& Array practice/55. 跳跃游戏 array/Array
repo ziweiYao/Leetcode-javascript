@@ -1,0 +1,48 @@
+var canJump1 = function(nums) {
+    let current_step = 0;
+    let StepCanGo = nums[current_step];
+    while( current_step <= nums.length -1 ){
+        if(current_step === nums.length -1){
+            return true;
+        }
+        if(StepCanGo <= 0){
+            return false;
+        }
+        if(nums[current_step]>StepCanGo){
+            StepCanGo = nums[current_step]
+        }
+        console.log("current_step: ",current_step,"StepCanGo: ", StepCanGo)    
+        current_step += 1;
+        StepCanGo -= 1;
+    }
+    return false
+};
+
+//官网答案↓
+var canJump = function(nums) {
+    let mx = 0;
+    for (let i = 0; mx < nums.length - 1; i++) {
+        if (i > mx) { // 无法到达 i
+            return false;
+        }
+        mx = Math.max(mx, i + nums[i]); // 从 i 最右可以跳到 i + nums[i]
+        if(mx >= nums.length){
+            return true;
+        }
+    }
+    return true;
+};
+/*
+作者：灵茶山艾府
+链接：https://leetcode.cn/problems/jump-game/solutions/2798996/liang-chong-li-jie-fang-shi-wei-hu-zui-y-q67s/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+作者：灵茶山艾府
+链接：https://leetcode.cn/problems/jump-game/solutions/2798996/liang-chong-li-jie-fang-shi-wei-hu-zui-y-q67s/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+作者：灵茶山艾府
+链接：https://leetcode.cn/problems/jump-game/solutions/2798996/liang-chong-li-jie-fang-shi-wei-hu-zui-y-q67s/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。*/

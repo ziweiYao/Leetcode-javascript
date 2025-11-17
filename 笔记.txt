@@ -20,17 +20,56 @@ const nums = [5, 2, 9, 1];
 nums.sort((a, b) => a - b); // [1, 2, 5, 9]
 const nums = [5, 2, 9, 1];
 nums.sort((a, b) => b - a); // [9, 5, 2, 1]
+长度: nums.length
+
+array.push(element) //在数组末尾添加元素
+array.unshift(element) //在数组开头添加元素
+array.pop() //删除数组末尾元素
+array.shift() //删除数组开头元素
+
+array.splice(index, howmany, item1, ....., itemX) //删除，替换，插入数组元素
+例子: 
+const arr = [1, 2, 3, 4, 5];
+arr.splice(2, 0, 6, 7); //在索引2的位置插入6和7
+console.log(arr); // [1, 2, 6, 7, 3, 4, 5]
+arr.splice(2, 2, 8, 9); //从索引2开始，删除2个元素，然后插入8和9
+console.log(arr); // [1, 2, 8, 9, 3, 4, 5]
+
+array.slice(start, end) //返回数组的一部分，不改变原数组
+array.concat(array2, array3, ...) //合并数组
+array.includes(element) //判断数组是否包含元素
+array.indexOf(element) //返回元素在数组中的索引，找不到返回-1
+array.join(separator) //将数组转换为字符串，用separator分隔
+array.reverse() //反转数组
+array.map(callback(currentValue, index, arr), thisValue) //遍历数组，返回一个新数组
+array.filter(callback(currentValue, index, arr), thisValue) //过滤数组，返回一个新数组
+array.reduce(callback(accumulator, currentValue, index, arr), initialValue) //遍历数组，返回一个值
+array.some(callback(currentValue, index, arr), thisValue) //判断数组是否有元素满足条件
+array.every(callback(currentValue, index, arr), thisValue) //判断数组是否所有元素都满足条件
+array.find(callback(currentValue, index, arr), thisValue) //返回满足条件的第一个元素
+
+array.findIndex(callback(currentValue, index, arr), thisValue) //返回满足条件的第一个元素的索引
+findIndex的用法： 
+
+const arr = [1, 2, 3, 4, 5];
+const index = arr.findIndex(value => value > 3); // 4
+console.log(index); // 4
+const arr = [1, 2, 3, 4, 5];
+const index = arr.findIndex(value => value > 5); // -1
+
 
 forEach的循环:
 	
-array.forEach((value) => { function 内容，index为循环数列的每一个元素的内容   })
-array.forEach((value, index) => { function 内容，index为循环数列的每一个元素的内容   })
+array.forEach((value) => { function 内容，value为循环数列的每一个元素的内容   })
+array.forEach((value, index) => { function 内容，value为循环数列的每一个元素的内容，
+index为当前元素的索引   })
 
 for的循环, 注意，是of，不是 in
 for (const value of array) //注意js的forloop要一个括号
 { function }
 
 for( let i = 0; i < 10; i++){ function ) 不直接使用数列的循环。
+
 
 --------------------------------------------
 用于Map: 
@@ -39,8 +78,31 @@ Map结构为 {key:value} 例子：Map(4) { 1 => 2, 2 => 2, 3 => 1, 4 => 1 }
 
 排序:
 const freq = new Map([[1, 3], [2, 1], [3, 2]]);
+
+// 如果要按key排序
+const sortedMap = new Map([...map.entries()].sort((a, b) => a[0] - b[0]));
+
+// 如果要按value排序（这里value是索引数组）
+const sortedMap = new Map([...map.entries()].sort((a, b) => a[1].length - b[1].length));
+
+//转换为Array并排序
 const sorted = Array.from(freq).sort((a, b) => b[1] - a[1]);
 // [[1,3], [3,2], [2,1]] (sorted by frequency descending)
+const freq = new Map([[1, 3], [2, 1], [3, 2]]);
+const sorted = Array.from(freq).sort((a, b) => a[0] - b[0]); //Array.from(freq)是将map转换为数组，sort是对数组排序，sorted是排序后的数组
+// [[1,3], [2,1], [3,2]] (sorted by key ascending)
+
+Map的长度: map_name.size
+
+Map的遍历:
+for (const [key, value] of map_name) { function 内容 } //遍历key和value
+for (const key of map_name.keys()) { function 内容 } //遍历key
+for (const value of map_name.values()) { function 内容 } //遍历value
+for (const [key, value] of map_name.entries()) { function 内容 } //遍历key和value
+
+Map的查询和更新:
+map_name.get(key) //获得key的值
+map_name.set(key, value); //更新key的值
 
 Map的循环
 方法1
@@ -51,3 +113,5 @@ for ([key,value] of map_name){ function 内容}
 Map查询和更新
 Map.get(key) //获得key的值
 Map.set(key, value); //更新key的值
+Map.delete(key); //删除key
+Map.has(key); //判断是否存在key
